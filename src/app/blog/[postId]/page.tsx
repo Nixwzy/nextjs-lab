@@ -1,23 +1,25 @@
-'use client';
 // jsonplaceholder.typicode.com/posts/1
-import { use } from "react";
 
 type Props = {
-  params: Promise<{
+  params: {
     postId: string;
-  }>
-}
+  };
+};
 
-const Page = ( { params }: Props) => {
-  const { postId} = use(params);
+
+
+const Page = async ({ params }: Props) => {
+  const postRequest = await fetch(
+    `https://jsonplaceholder.typicode.com/posts/${params.postId}`
+  )
+  const post = await postRequest.json();
   return (
     <div className="text-center">
-      <div>Id: {postId}</div>
+      <div>Id: {params.postId}</div>
       <h1 className="text-3xl uppercase my-3">Título do Post</h1>
       <p>Corpo do Post</p>
-
     </div>
   );
-}
+};
 
 export default Page;
