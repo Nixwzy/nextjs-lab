@@ -16,6 +16,14 @@ const Page = async ({ params }: Props) => {
   );
   const post: Post = await postRequest.json();
 
+  if (!post) {
+    return <div>Carregando...</div>;
+  }
+
+  if (!post.id) {
+    return <div>Post não encontrado!</div>;
+  }
+
   return (
     <div className="text-center">
       <div>Id: {post.id}</div>
