@@ -3,23 +3,27 @@
 import { Post } from "@/types/Post";
 
 type Props = {
-  params: {
+  params: Promise<{
     postId: string;
-  };
+  }>;
 };
 
 
 
 const Page = async ({ params }: Props) => {
+  const { postId } = await params;
   const postRequest = await fetch(
-    `https://jsonplaceholder.typicode.com/posts/${params.postId}`
+    `https://jsonplaceholder.typicode.com/posts/${postId}`
   )
   const post: Post = await postRequest.json();
+
+
+
   return (
     <div className="text-center">
-      <div>Id: {params.postId}</div>
-      <h1 className="text-3xl uppercase my-3">Título do Post</h1>
-      <p>Corpo do Post</p>
+      <div>Id: {post.id}</div>
+      <h1 className="text-3xl uppercase my-3">{post.title}</h1>
+      <p>{post.body}</p>
     </div>
   );
 };
