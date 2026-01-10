@@ -1,19 +1,23 @@
 'use client';
+// jsonplaceholder.typicode.com/posts/1
+import { use } from "react";
 
 type Props = {
-    params: {
-        postId: string;
-    }
+  params: Promise<{
+    postId: string;
+  }>
 }
-import React from 'react';
 
-const Page = ({ params }: Props) => {
+const Page = ( { params }: Props) => {
+  const { postId} = use(params);
   return (
-    <div>
-      Blog id: {params.postId}
+    <div className="text-center">
+      <div>Id: {postId}</div>
+      <h1 className="text-3xl uppercase my-3">Título do Post</h1>
+      <p>Corpo do Post</p>
 
     </div>
   );
-};
+}
 
 export default Page;
