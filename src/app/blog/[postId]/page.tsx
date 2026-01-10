@@ -11,6 +11,7 @@ const Page = ({ params }: Props) => {
   return (
     <div>
       Blog id: {params.postId}
+      commit test
     </div>
   );
 };
