@@ -1,4 +1,5 @@
 // jsonplaceholder.typicode.com/posts/1
+// Agora é possível acessar o ID do post via URL dinâmica ;)
 
 import { Post } from "@/types/Post";
 
