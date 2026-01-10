@@ -1,7 +1,7 @@
 // jsonplaceholder.typicode.com/posts/1
 // Agora é possível acessar o ID do post via URL dinâmica ;)
 
-import { Post } from "@/types/Post";
+import { Post } from '@/types/Post';
 
 type Props = {
   params: Promise<{
@@ -9,16 +9,12 @@ type Props = {
   }>;
 };
 
-
-
 const Page = async ({ params }: Props) => {
   const { postId } = await params;
   const postRequest = await fetch(
     `https://jsonplaceholder.typicode.com/posts/${postId}`
-  )
+  );
   const post: Post = await postRequest.json();
-
-
 
   return (
     <div className="text-center">
