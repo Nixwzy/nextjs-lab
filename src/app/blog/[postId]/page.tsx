@@ -1,5 +1,7 @@
 // jsonplaceholder.typicode.com/posts/1
 
+import { Post } from "@/types/Post";
+
 type Props = {
   params: {
     postId: string;
@@ -12,7 +14,7 @@ const Page = async ({ params }: Props) => {
   const postRequest = await fetch(
     `https://jsonplaceholder.typicode.com/posts/${params.postId}`
   )
-  const post = await postRequest.json();
+  const post: Post = await postRequest.json();
   return (
     <div className="text-center">
       <div>Id: {params.postId}</div>
